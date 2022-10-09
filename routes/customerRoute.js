@@ -4,6 +4,7 @@ const CustomValidate = require('../helper/validationhelper');
 const Customer = require('../model/customer');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const {getSample} = require('../helper/middleware')
 
 router.post('/create', async (req, res) => {
 	let postData = req.body;
@@ -37,6 +38,8 @@ router.post('/create', async (req, res) => {
 });
 router.post('/login', async (req, res) => {
 	let postData = req.body;
+	console.log(getSample());
+	console.log(Utils.getSample(),"from Global");
 	try {
 		let result = await Customer.findOne({ email: postData.email });
 		if (!result) {

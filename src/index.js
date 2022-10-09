@@ -11,6 +11,9 @@ const cors = require('cors');
 const port = process.env.PORT || 3000;
 const morgan = require('morgan');
 
+// importing Global Function
+app.locals.Utils = require('../helper/middleware');
+
 // basic requirements
 require('../mongo/mongoose');
 const tokenChecker = require('../helper/tokenchecker');
@@ -37,6 +40,8 @@ app.on('ready', () => {
 		console.log('server is running on port ' + port);
 	});
 });
+
+Utils = require('../helper/middleware')
 
 // addition config
 mongoose.connection.on('connected', () => {
